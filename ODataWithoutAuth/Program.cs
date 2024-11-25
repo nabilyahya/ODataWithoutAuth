@@ -1,13 +1,14 @@
 using AirVinyl.API.DbContexts;
 using Microsoft.AspNetCore.OData;
 using Microsoft.OpenApi.Models;
-
 using Microsoft.EntityFrameworkCore;
 using AirVinyl.EntityDataModels;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AirVinylDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+    //options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+        options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
 // Add OData services and enable query options like Select, Expand, Filter, etc.

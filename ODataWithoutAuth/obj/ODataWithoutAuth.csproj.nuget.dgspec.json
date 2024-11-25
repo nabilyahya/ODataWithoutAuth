@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nabil\\source\\repos\\ODataWithoutAuth\\ODataWithoutAuth\\ODataWithoutAuth.csproj": {}
+    "C:\\Users\\nabil\\Documents\\ODataWithoutAuth\\ODataWithoutAuth\\ODataWithoutAuth.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nabil\\source\\repos\\ODataWithoutAuth\\ODataWithoutAuth\\ODataWithoutAuth.csproj": {
+    "C:\\Users\\nabil\\Documents\\ODataWithoutAuth\\ODataWithoutAuth\\ODataWithoutAuth.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nabil\\source\\repos\\ODataWithoutAuth\\ODataWithoutAuth\\ODataWithoutAuth.csproj",
+        "projectUniqueName": "C:\\Users\\nabil\\Documents\\ODataWithoutAuth\\ODataWithoutAuth\\ODataWithoutAuth.csproj",
         "projectName": "ODataWithoutAuth",
-        "projectPath": "C:\\Users\\nabil\\source\\repos\\ODataWithoutAuth\\ODataWithoutAuth\\ODataWithoutAuth.csproj",
+        "projectPath": "C:\\Users\\nabil\\Documents\\ODataWithoutAuth\\ODataWithoutAuth\\ODataWithoutAuth.csproj",
         "packagesPath": "C:\\Users\\nabil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nabil\\source\\repos\\ODataWithoutAuth\\ODataWithoutAuth\\obj\\",
+        "outputPath": "C:\\Users\\nabil\\Documents\\ODataWithoutAuth\\ODataWithoutAuth\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nabil\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -50,6 +50,12 @@
               "target": "Package",
               "version": "[9.1.1, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[9.0.0, )"
@@ -59,6 +65,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.20.1, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

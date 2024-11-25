@@ -1,0 +1,8 @@
+containers/
+obj/Docker/
+obj/Debug/
+ODataWithoutAuth/obj/Release/net8.0/
+bin/
+.vs/
+ODataWithoutAuth/obj/Release/Docker/
+ODataWithoutAuth/obj/Debug/

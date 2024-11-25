@@ -3,17 +3,20 @@ using System;
 using AirVinyl.API.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace AirVinyl.Migrations
+namespace ODataWithoutAuth.Migrations
 {
     [DbContext(typeof(AirVinylDbContext))]
-    partial class AirVinylDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241125103037_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -3,56 +3,61 @@ using System;
 using AirVinyl.API.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace AirVinyl.Migrations
+#nullable disable
+
+namespace ODataWithoutAuth.Migrations
 {
     [DbContext(typeof(AirVinylDbContext))]
-    [Migration("20210421133419_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20241125103737_InitialCreate2")]
+    partial class InitialCreate2
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.10")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "9.0.0")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("AirVinyl.Entities.Person", b =>
                 {
                     b.Property<int>("PersonId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PersonId"));
 
                     b.Property<decimal>("AmountOfCashToSpend")
                         .HasColumnType("decimal(8,2)");
 
                     b.Property<DateTimeOffset>("DateOfBirth")
-                        .HasColumnType("datetimeoffset");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<int>("Gender")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<int>("NumberOfRecordsOnWishList")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("PersonId");
 
@@ -63,7 +68,7 @@ namespace AirVinyl.Migrations
                         {
                             PersonId = 1,
                             AmountOfCashToSpend = 300m,
-                            DateOfBirth = new DateTimeOffset(new DateTime(1981, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)),
+                            DateOfBirth = new DateTimeOffset(new DateTime(1981, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
                             Email = "kevin@kevindockx.com",
                             FirstName = "Kevin",
                             Gender = 1,
@@ -74,7 +79,7 @@ namespace AirVinyl.Migrations
                         {
                             PersonId = 2,
                             AmountOfCashToSpend = 2000m,
-                            DateOfBirth = new DateTimeOffset(new DateTime(1986, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 1, 0, 0, 0)),
+                            DateOfBirth = new DateTimeOffset(new DateTime(1986, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)),
                             Email = "sven@someemailprovider.com",
                             FirstName = "Sven",
                             Gender = 1,
@@ -85,7 +90,7 @@ namespace AirVinyl.Migrations
                         {
                             PersonId = 3,
                             AmountOfCashToSpend = 100m,
-                            DateOfBirth = new DateTimeOffset(new DateTime(1977, 12, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 1, 0, 0, 0)),
+                            DateOfBirth = new DateTimeOffset(new DateTime(1977, 12, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)),
                             Email = "nele@someemailprovider.com",
                             FirstName = "Nele",
                             Gender = 0,
@@ -96,7 +101,7 @@ namespace AirVinyl.Migrations
                         {
                             PersonId = 4,
                             AmountOfCashToSpend = 2500m,
-                            DateOfBirth = new DateTimeOffset(new DateTime(1983, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)),
+                            DateOfBirth = new DateTimeOffset(new DateTime(1983, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
                             Email = "nils@someemailprovider.com",
                             FirstName = "Nils",
                             Gender = 1,
@@ -107,7 +112,7 @@ namespace AirVinyl.Migrations
                         {
                             PersonId = 5,
                             AmountOfCashToSpend = 90m,
-                            DateOfBirth = new DateTimeOffset(new DateTime(1981, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)),
+                            DateOfBirth = new DateTimeOffset(new DateTime(1981, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
                             Email = "tim@someemailprovider.com",
                             FirstName = "Tim",
                             Gender = 1,
@@ -118,7 +123,7 @@ namespace AirVinyl.Migrations
                         {
                             PersonId = 6,
                             AmountOfCashToSpend = 200m,
-                            DateOfBirth = new DateTimeOffset(new DateTime(1981, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 1, 0, 0, 0)),
+                            DateOfBirth = new DateTimeOffset(new DateTime(1981, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 2, 0, 0, 0)),
                             FirstName = "Kenneth",
                             Gender = 1,
                             LastName = "Mills",
@@ -130,19 +135,20 @@ namespace AirVinyl.Migrations
                 {
                     b.Property<int>("PressingDetailId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PressingDetailId"));
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
 
                     b.Property<int>("Grams")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("Inches")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("PressingDetailId");
 
@@ -183,17 +189,18 @@ namespace AirVinyl.Migrations
                 {
                     b.Property<int>("RatingId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("RatingId"));
 
                     b.Property<int>("RatedByPersonId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("RecordStoreId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("Value")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("RatingId");
 
@@ -259,26 +266,31 @@ namespace AirVinyl.Migrations
                 {
                     b.Property<int>("RecordStoreId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("RecordStoreId"));
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(34)
+                        .HasColumnType("character varying(34)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
+                        .HasMaxLength(150)
+                        .HasColumnType("character varying(150)");
 
                     b.Property<string>("Tags")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("RecordStoreId");
 
                     b.ToTable("RecordStores");
 
-                    b.HasDiscriminator<string>("Discriminator").HasValue("RecordStore");
+                    b.HasDiscriminator().HasValue("RecordStore");
+
+                    b.UseTphMappingStrategy();
 
                     b.HasData(
                         new
@@ -293,31 +305,33 @@ namespace AirVinyl.Migrations
                 {
                     b.Property<int>("VinylRecordId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("VinylRecordId"));
 
                     b.Property<string>("Artist")
                         .IsRequired()
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
+                        .HasMaxLength(150)
+                        .HasColumnType("character varying(150)");
 
                     b.Property<string>("CatalogNumber")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<int>("PersonId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("PressingDetailId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
+                        .HasMaxLength(150)
+                        .HasColumnType("character varying(150)");
 
                     b.Property<int?>("Year")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("VinylRecordId");
 
@@ -487,7 +501,8 @@ namespace AirVinyl.Migrations
                     b.HasBaseType("AirVinyl.Entities.RecordStore");
 
                     b.Property<string>("Specialization")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasDiscriminator().HasValue("SpecializedRecordStore");
 
@@ -521,6 +536,8 @@ namespace AirVinyl.Migrations
                         .HasForeignKey("RecordStoreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("RatedBy");
                 });
 
             modelBuilder.Entity("AirVinyl.Entities.RecordStore", b =>
@@ -528,25 +545,27 @@ namespace AirVinyl.Migrations
                     b.OwnsOne("AirVinyl.Entities.Address", "StoreAddress", b1 =>
                         {
                             b1.Property<int>("RecordStoreId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                                .HasColumnType("integer");
 
                             b1.Property<string>("City")
-                                .HasColumnType("nvarchar(100)")
-                                .HasMaxLength(100);
+                                .IsRequired()
+                                .HasMaxLength(100)
+                                .HasColumnType("character varying(100)");
 
                             b1.Property<string>("Country")
-                                .HasColumnType("nvarchar(100)")
-                                .HasMaxLength(100);
+                                .IsRequired()
+                                .HasMaxLength(100)
+                                .HasColumnType("character varying(100)");
 
                             b1.Property<string>("PostalCode")
-                                .HasColumnType("nvarchar(10)")
-                                .HasMaxLength(10);
+                                .IsRequired()
+                                .HasMaxLength(10)
+                                .HasColumnType("character varying(10)");
 
                             b1.Property<string>("Street")
-                                .HasColumnType("nvarchar(200)")
-                                .HasMaxLength(200);
+                                .IsRequired()
+                                .HasMaxLength(200)
+                                .HasColumnType("character varying(200)");
 
                             b1.HasKey("RecordStoreId");
 
@@ -581,6 +600,9 @@ namespace AirVinyl.Migrations
                                     Street = "25, Fluffy Road"
                                 });
                         });
+
+                    b.Navigation("StoreAddress")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("AirVinyl.Entities.VinylRecord", b =>
@@ -596,6 +618,20 @@ namespace AirVinyl.Migrations
                         .HasForeignKey("PressingDetailId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Person");
+
+                    b.Navigation("PressingDetail");
+                });
+
+            modelBuilder.Entity("AirVinyl.Entities.Person", b =>
+                {
+                    b.Navigation("VinylRecords");
+                });
+
+            modelBuilder.Entity("AirVinyl.Entities.RecordStore", b =>
+                {
+                    b.Navigation("Ratings");
                 });
 #pragma warning restore 612, 618
         }

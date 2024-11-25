@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("ed6632ef-059a-443b-a89d-ec8e18912700")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("ODataWithoutAuth")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a82609a688ce52ada54a962e52db2163b7e55527")]
 [assembly: System.Reflection.AssemblyProductAttribute("ODataWithoutAuth")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ODataWithoutAuth")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
