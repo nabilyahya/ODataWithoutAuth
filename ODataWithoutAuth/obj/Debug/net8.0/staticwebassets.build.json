@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "x21Wsm8fU7cAaKcruaOhAv9G/1wl9Q+OlTMdCxM8Ffk=",
+  "Source": "ODataWithoutAuth",
+  "BasePath": "_content/ODataWithoutAuth",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
